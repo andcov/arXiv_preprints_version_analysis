@@ -2,7 +2,7 @@
 Many scientific papers change over time in order to correct mistakes after peer-reviews or to modify metadata. The aim of this project is to find such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
 ## General approach
-Kaggle [provides](https://www.kaggle.com/datasets/Cornell-University/arxiv) a JSON file that contains metadata describing the entire arXiv corpus. This will be used to find papers with more than one version and to group them base on subject, date of publication on arXiv etc. (the processed metadata of these papers is saved in `papers.csv`).
+Kaggle [provides](https://www.kaggle.com/datasets/Cornell-University/arxiv) a JSON file that contains metadata describing the entire arXiv corpus. This will be used to find papers with more than one version and to group them based on subject, date of publication on arXiv etc. (the processed metadata of these papers is saved in `papers.csv`).
 
 A subset of the aforementioned papers will be fed to [GROBID](https://github.com/kermitt2/grobid) in order to convert them to [TEI](https://tei-c.org/) (a format of XML designed to describe scientific papers).
 
@@ -11,7 +11,7 @@ These XML files will then be compared based on a number of metrics.
 ## Setup
 1. Clone the repository (the Python client of GROBID is used as a submodule so the `--recurse-submodules` flag is necessary):
 ```bash
-git clone --recurse-submodules
+git clone --recurse-submodules https://github.com/andcov/multi-versioned_arxiv_papers
 ```
 If you forgot the `--recurse-submodules` flag when cloning, use the follwoing command:
 ```bash
