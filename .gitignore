@@ -1,0 +1,8 @@
+bin
+etc
+lib
+share
+arxiv-metadata-oai-snapshot.json
+papers.csv
+.ipynb_checkpoints
+pyvenv.cfg
