@@ -4,5 +4,7 @@ lib
 share
 arxiv-metadata-oai-snapshot.json
 papers.csv
+cs_papers.csv
+math_papers.csv
 .ipynb_checkpoints
 pyvenv.cfg
