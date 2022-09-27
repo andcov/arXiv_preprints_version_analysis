@@ -3,9 +3,8 @@ import time
 import sys
 import pandas as pd
 
-mode = str(sys.argv[1])
-
-download_path = "/mnt/volume_nyc1_01"
+mode = "math" # or "cs"
+download_path = "./papers"
 
 if mode == "math":
     csv_name = "math_papers.csv"
@@ -17,7 +16,7 @@ else:
     print("Available args are `math` or `cs`")
     quit()
 
-papers = pd.read_csv(csv_name, parse_dates=['first_version_date', 'last_version_date'], low_memory=False)
+papers = pd.read_csv(csv_name, parse_dates = ["date"], low_memory=False)
 
 def download(x):
     for i in range(1, x["versions"] + 1):
@@ -29,5 +28,6 @@ def download(x):
             f.write(response.content)
         print("Downloaded " + name)
         time.sleep(1)
+    print()
 
-papers.loc[papers["versions"] <= 4].sample(frac=1).apply(download, axis = 1)
+papers.loc[papers["versions"] <= 4].sample(frac=1).head(50).apply(download, axis = 1)
