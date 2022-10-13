@@ -1,6 +1,16 @@
 # Analysis of changes between versions of scientific papers published on arXiv
 Many scientific papers change over time in order to correct mistakes after peer-reviews or to modify metadata. The aim of this project is to find such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
+#### Table of contents
+* [General approach](https://github.com/andcov/multi-versioned_arxiv_papers#general-approach)
+* [Setup](https://github.com/andcov/multi-versioned_arxiv_papers#setup)
+* [Documentation & Design Decisions](https://github.com/andcov/multi-versioned_arxiv_papers#documentation--design-decisions)
+	* [Preprocess & Pre-analyse](https://github.com/andcov/multi-versioned_arxiv_papers#preprocess--pre-analyse)
+	* [Download & Process](https://github.com/andcov/multi-versioned_arxiv_papers#download--process)
+	* [Analyse](https://github.com/andcov/multi-versioned_arxiv_papers#analyse)
+* [Acknowledgements](https://github.com/andcov/multi-versioned_arxiv_papers#acknowledgements)
+
+
 ## General approach
 Kaggle [provides](https://www.kaggle.com/datasets/Cornell-University/arxiv) a Json file that contains metadata describing the entire arXiv corpus. This will be used to find papers with more than one version and to group them based on subject, date of publication on arXiv etc.
 
@@ -8,7 +18,7 @@ A subset of the aforementioned papers will be fed to [GROBID](https://github.com
 
 These XML files will then be compared based on a number of metrics.
 
-## Setup
+# Setup
 1. Clone the repository (the Python client of GROBID is used as a submodule so the `--recurse-submodules` flag is necessary):
 ```bash
 git clone --recurse-submodules https://github.com/andcov/multi-versioned_arxiv_papers
@@ -123,6 +133,6 @@ There is one exception to the issues mentioned above, the title. If the title of
 
 When computing `words_cnt`, `added_words_cnt` and `removed_words_cnt`, what constitutes a token is a simple Regex expression (`[a-z]+`; note that uppercase letters are not included as the text is first converted to lowercase). More advanced NLP techniques were considered, but due to the size of the corpus these were impractical. This simplicity may, however, not be and issue, as scientific papers use a formal register which is suitable for this kind of segmentation.
 
-## Acknowledgements
+# Acknowledgements
 Thank you to arXiv for use of its open access interoperability.
 Thank you to Grobid for it's open source software.
