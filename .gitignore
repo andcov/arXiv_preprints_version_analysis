@@ -9,3 +9,4 @@ math_papers.csv
 phys_papers.csv
 .ipynb_checkpoints
 pyvenv.cfg
+.DS_Store
