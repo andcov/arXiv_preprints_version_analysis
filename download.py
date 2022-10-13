@@ -26,12 +26,12 @@ def download(paper):
     # download all versions of `paper`
     for i in range(1, paper['total_versions'] + 1):
         # some papers have '/' in their id
-        # this does not work well with paths, so we replace '/' with '_'
+        # this does not work well with paths, so '/' is replaced with '_'
         idx = paper['id'].replace('/', '_')
         
-        # the papers are saved as a Pdf that may look like `1811.11745v1.pdf`
+        # the papers are saved as PDFs that may look like `1811.11745v1.pdf`
         name = idx + 'v' + str(i) + '.pdf'
-        
+
         # the paper is requested from `export.arxiv.org` which is a domain dedicated to bots
         url = 'https://export.arxiv.org/pdf/' + name
         
