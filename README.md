@@ -62,11 +62,17 @@ During these phases, decisions had to be made about which papers to take into ac
 
 ## Preprocess & Pre-analyse
 Only papers with at least 2 and up to 4 versions where saved. The majority of papers with multiple versions fit in this category:
+
 ![](/images/total_versions_hist.png)
+
 For similar reasons, only physics, mathematics and computer science papers were considered: 
+
 ![](/images/categories_bar.png)
+
 It also became apparent that some papers are registered in multiple different categories, but this is not a significant sample of the corpus:
+
 ![](/images/venn.png)
+
 
 Each version of each paper is stored as a separate entry in a DataFrame (usually called `papers` in the Jupyter Notebooks; equivalent to the `papers.csv` file). This made comparing consecutive versions very easy later on in the process.
 
