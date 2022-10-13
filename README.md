@@ -1,4 +1,4 @@
-# Analysis of changes between versions of scientific papers published on arXiv
+# ArXiv preprints version analysis
 Many scientific papers change over time in order to correct mistakes after peer-reviews or to modify metadata. The aim of this project is to find such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
 #### Table of contents
