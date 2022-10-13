@@ -2,13 +2,13 @@
 Many scientific papers change over time in order to correct mistakes after peer-reviews or to modify metadata. The aim of this project is to find such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
 #### Table of contents
-* [General approach](https://github.com/andcov/multi-versioned_arxiv_papers#general-approach)
-* [Setup](https://github.com/andcov/multi-versioned_arxiv_papers#setup)
-* [Documentation & Design Decisions](https://github.com/andcov/multi-versioned_arxiv_papers#documentation--design-decisions)
-	* [Preprocess & Pre-analyse](https://github.com/andcov/multi-versioned_arxiv_papers#preprocess--pre-analyse)
-	* [Download & Process](https://github.com/andcov/multi-versioned_arxiv_papers#download--process)
-	* [Analyse](https://github.com/andcov/multi-versioned_arxiv_papers#analyse)
-* [Acknowledgements](https://github.com/andcov/multi-versioned_arxiv_papers#acknowledgements)
+* [General approach](https://github.com/andcov/arXiv_preprints_version_analysis#general-approach)
+* [Setup](https://github.com/andcov/arXiv_preprints_version_analysis#setup)
+* [Documentation & Design Decisions](https://github.com/andcov/arXiv_preprints_version_analysis#documentation--design-decisions)
+	* [Preprocess & Pre-analyse](https://github.com/andcov/arXiv_preprints_version_analysis#preprocess--pre-analyse)
+	* [Download & Process](https://github.com/andcov/arXiv_preprints_version_analysis#download--process)
+	* [Analyse](https://github.com/andcov/arXiv_preprints_version_analysis#analyse)
+* [Acknowledgements](https://github.com/andcov/arXiv_preprints_version_analysis#acknowledgements)
 
 
 ## General approach
