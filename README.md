@@ -8,6 +8,8 @@ Many scientific papers change over time in order to correct mistakes after peer-
 	* [Preprocess & Pre-analyse](https://github.com/andcov/arXiv_preprints_version_analysis#preprocess--pre-analyse)
 	* [Download & Process](https://github.com/andcov/arXiv_preprints_version_analysis#download--process)
 	* [Analyse](https://github.com/andcov/arXiv_preprints_version_analysis#analyse)
+		* [Words and tokens](https://github.com/andcov/arXiv_preprints_version_analysis#words-and-tokens)
+		* [NaN values](https://github.com/andcov/arXiv_preprints_version_analysis#nan-values)
 * [Acknowledgements](https://github.com/andcov/arXiv_preprints_version_analysis#acknowledgements)
 
 
@@ -111,28 +113,39 @@ A number of metrics were then computed:
 * `grobid` - True if Grobid managed to process this version, False otherwise
 * `pages` - number of pages
 * `delta_pages` - difference in the number of pages between this version and the previous one
-* `words_cnt` - number of unique words in this version
-* `added_words_cnt` - number of unique words added from the previous version
-* `removed_words_cnt` - number of unique words removed from the previous version
+* `tokens_cnt` - number of tokens in this version
+* `delta_tokens_cnt` - difference in the number of tokens between this version and the previous one
+* `words_cnt` - number of words in this version
+* `word_density` - number of words per page
+* `added_words_cnt` - number of words added from the previous version
+* `removed_words_cnt` - number of words removed from the previous version
+* `relative_added_words` - number of added words divided by the number of words from **this version**
+* `relative_removed_words` - number of removed words divided by the number of words **from the previous version**
 * `ref_cnt` - number of references
 * `delta_ref_cnt` - difference in the number of references between this version and the previous one
 * `authors_cnt` - number of authors
 * `delta_authors_cnt` - difference in the number of authors between this version and the previous one
 * `figures_cnt` - number of figures
 * `delta_figures_cnt` - difference in the number of figures between this version and the previous one
+* `figures_density` - number of figures per page
 * `title_changed` - True if the previous version has a different title
 * `abstract_changed` - True if abstract differs compared to the previous version
 
-If one of these fields is equal to NaN or NaT it may be because:
+### Words and tokens
+**Important:** A distinction must be made between words and tokens. From now on, tokens will be referring to all of the words that constitute a paper, while words will indicate the unique tokens that appear in a paper  (e.g. ”he is tall and he is short” consists of 7 tokens and 5 words)
+
+When computing any of the features related to words or tokens, what constitutes a token is a simple Regex expression `\p{L}{2,}` (two or more Unicode characters; Unicode characters were used instead of ASCII in order to incorporate other languages and alphabets). More advanced NLP techniques were considered, but due to the size of the corpus these were impractical. This simplicity may, however, not be and issue, as scientific papers use a formal register which is suitable for this kind of segmentation.
+
+### NaN values
+One of these fields may be equal to NaN or NaT if:
 * it is the first version, so the delta values could not be computed as there is no previous version to compare to.
-* `is_pdf` is False. In this case, the vast majority of the values cannot be extracted.
-* `grobid` is False. In this case, any value that should have been extracted from the TEI file will be NaN.
-* in some cases, values are missing in the TEI file and they are replaced by NaN.
+* `is_pdf` is False; in this case, the vast majority of the values cannot be extracted.
+* `grobid` is False; in this case, any value that should have been extracted from the TEI file will be NaN.
+* values in the TEI file are missing
 
-There is one exception to the issues mentioned above, the title. If the title of a version cannot be extracted from the TEI file, or if this file does not exist, the original title from the Kaggle corpus will be used.
-
-When computing `words_cnt`, `added_words_cnt` and `removed_words_cnt`, what constitutes a token is a simple Regex expression (`[a-z]+`; note that uppercase letters are not included as the text is first converted to lowercase). More advanced NLP techniques were considered, but due to the size of the corpus these were impractical. This simplicity may, however, not be and issue, as scientific papers use a formal register which is suitable for this kind of segmentation.
+There is one exception to the cases mentioned above in relation to the title. If the title of a version cannot be extracted from the TEI file, or if this file does not exist, the original title from the Kaggle corpus will be used.
 
 # Acknowledgements
 Thank you to arXiv for use of its open access interoperability.
+
 Thank you to Grobid for it's open source software.
