@@ -1,5 +1,5 @@
 # ArXiv preprints version analysis
-Many scientific papers change over time in order to correct mistakes after peer-reviews or to modify metadata. The aim of this project is to find such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
+Many scientific papers change over time in order to correct mistakes, address peer review comments, or to modify metadata. The aim of this project is to identify such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
 #### Table of contents
 * [General approach](https://github.com/andcov/arXiv_preprints_version_analysis#general-approach)
@@ -18,7 +18,7 @@ Kaggle [provides](https://www.kaggle.com/datasets/Cornell-University/arxiv) a Js
 
 A subset of the aforementioned papers will be fed to [GROBID](https://github.com/kermitt2/grobid) in order to convert them to [TEI](https://tei-c.org/) (a format of XML designed to describe scientific papers).
 
-These XML files will then be compared based on a number of metrics.
+These XML files will then be compared based on a number of features.
 
 # Setup
 1. Clone the repository (the Python client of GROBID is used as a submodule so the `--recurse-submodules` flag is necessary):
@@ -68,7 +68,7 @@ The project was split into four main phases:
 1. **Preprocess** - download and parse the Kaggle Json file
 2. **Pre-analyse** - analyse the arXiv corpus and decide which papers to keep and which to discard
 3. **Download & Process** - download the PDFs decided upon in the previous step and process them using Grobid
-4. **Analyse** - extract a number of metrics from the TEI files
+4. **Analyse** - extract a number of features from the TEI files
 
 During these phases, decisions had to be made about which papers to take into account and about how to structure the papers' metadata.
 
@@ -106,7 +106,7 @@ We attempted to download 28724 versions. However, this was not wholly a straight
 In the end, the second phase resulted in 24758 valid papers with their corresponding TEI files.
 
 ## Analyse
-A number of metrics were then computed:
+A number of features were then computed:
 * `title` - title of the version (may differ from one version to another)
 * `delta_time` - interval of time between the previous version and this one
 * `is_pdf` - True if this version is a Pdf, False otherwise
@@ -115,8 +115,8 @@ A number of metrics were then computed:
 * `delta_pages` - difference in the number of pages between this version and the previous one
 * `tokens_cnt` - number of tokens in this version
 * `delta_tokens_cnt` - difference in the number of tokens between this version and the previous one
+* `token_density` - number of tokens per page
 * `words_cnt` - number of words in this version
-* `word_density` - number of words per page
 * `added_words_cnt` - number of words added from the previous version
 * `removed_words_cnt` - number of words removed from the previous version
 * `relative_added_words` - number of added words divided by the number of words from **this version**
@@ -146,6 +146,8 @@ One of these fields may be equal to NaN or NaT if:
 There is one exception to the cases mentioned above in relation to the title. If the title of a version cannot be extracted from the TEI file, or if this file does not exist, the original title from the Kaggle corpus will be used.
 
 # Acknowledgements
+This work has been done as part of an internship at TU Wien, Faculty of Informatics, Institute for Software Systems Engineering under the attentive guidance of Florina Piroi.
+
 Thank you to arXiv for use of its open access interoperability.
 
 Thank you to Grobid for it's open source software.
