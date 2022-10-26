@@ -23,7 +23,7 @@ These XML files will then be compared based on a number of features.
 # Setup
 1. Clone the repository (the Python client of GROBID is used as a submodule so the `--recurse-submodules` flag is necessary):
 ```bash
-git clone --recurse-submodules https://github.com/andcov/multi-versioned_arxiv_papers
+git clone --recurse-submodules https://github.com/andcov/arXiv_preprints_version_analysis
 ```
 If you forgot the `--recurse-submodules` flag when cloning, use the follwoing command:
 ```bash
