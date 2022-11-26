@@ -1,6 +1,8 @@
 # ArXiv preprints version analysis
 Many scientific papers change over time in order to correct mistakes, address peer review comments, or to modify metadata. The aim of this project is to identify such papers on arXiv, analyse changes between their versions, find the most common ones and see how they may differ based on the subject of the paper.
 
+The final report can be [ found here ](ArXiv_preprints_version_analysis.pdf).
+
 #### Table of contents
 * [General approach](https://github.com/andcov/arXiv_preprints_version_analysis#general-approach)
 * [Setup](https://github.com/andcov/arXiv_preprints_version_analysis#setup)
